@@ -36,7 +36,7 @@ class TestAction(RESTCommandTestCase):
         result = self.command('QueueSummary', token=s.token)
 
         self.session.post.assert_called_once_with(
-            self.base_url,
+            '{base}/QueueSummary'.format(base=self.base_url),
             params={},
             data='',
             headers={'X-Auth-Token': s.token})
@@ -48,7 +48,7 @@ class TestAction(RESTCommandTestCase):
         result = self.command('DBGet', {'Family': 'family', 'Key': 'key'}, token=s.token)
 
         self.session.post.assert_called_once_with(
-            self.base_url,
+            '{base}/DBGet'.format(base=self.base_url),
             params={},
             data=json.dumps({'Family': 'family', 'Key': 'key'}),
             headers={'X-Auth-Token': s.token})
