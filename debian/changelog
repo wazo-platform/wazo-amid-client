@@ -1,0 +1,5 @@
+xivo-amid-client (1.0) xivo-dev; urgency=low
+
+  * Initial release.
+
+ -- Sebastien Duthil <sduthil@avencall.com>  Wed, 02 Sep 2015 09:02:25 -0500
