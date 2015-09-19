@@ -15,23 +15,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import json
-
-from xivo_lib_rest_client import RESTCommand
+from xivo_lib_rest_client.client import BaseClient
 
 
-class ActionCommand(RESTCommand):
+class AmidClient(BaseClient):
 
-    resource = 'action'
+    namespace = 'amid_client.commands'
 
-    def __call__(self, action, params=None, token=None, **kwargs):
-        if token:
-            self.session.headers['X-Auth-Token'] = token
-        body = json.dumps(params) if params else ''
-        url = '{base}/{action}'.format(base=self.base_url, action=action)
-        r = self.session.post(url, data=body, params=kwargs)
-
-        if r.status_code != 200:
-            self.raise_from_response(r)
-
-        return r.json()
+    def __init__(self, host, port=9491, version='1.0', **kwargs):
+        super(AmidClient, self).__init__(host=host, port=port, version=version, **kwargs)

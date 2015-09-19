@@ -19,6 +19,7 @@ import json
 
 from hamcrest import assert_that
 from hamcrest import equal_to
+from hamcrest import has_entry
 from mock import sentinel as s
 
 from xivo_lib_rest_client.tests.command import RESTCommandTestCase
@@ -38,9 +39,9 @@ class TestAction(RESTCommandTestCase):
         self.session.post.assert_called_once_with(
             '{base}/QueueSummary'.format(base=self.base_url),
             params={},
-            data='',
-            headers={'X-Auth-Token': s.token})
+            data='')
         assert_that(result, equal_to({'return': 'value'}))
+        assert_that(self.session.headers, has_entry('X-Auth-Token', s.token))
 
     def test_action_with_params(self):
         self.session.post.return_value = self.new_response(200, json={'return': 'value'})
@@ -50,6 +51,6 @@ class TestAction(RESTCommandTestCase):
         self.session.post.assert_called_once_with(
             '{base}/DBGet'.format(base=self.base_url),
             params={},
-            data=json.dumps({'Family': 'family', 'Key': 'key'}),
-            headers={'X-Auth-Token': s.token})
+            data=json.dumps({'Family': 'family', 'Key': 'key'}))
         assert_that(result, equal_to({'return': 'value'}))
+        assert_that(self.session.headers, has_entry('X-Auth-Token', s.token))

@@ -15,6 +15,4 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-from xivo_lib_rest_client import new_client_factory
-
-Client = new_client_factory('amid_client.commands', 9491,  '1.0', default_https=True)
+from xivo_amid_client.client import AmidClient as Client
