@@ -25,11 +25,10 @@ class ActionCommand(RESTCommand):
     resource = 'action'
 
     def __call__(self, action, params=None, token=None, **kwargs):
-        if token:
-            self.session.headers['X-Auth-Token'] = token
+        headers = {'X-Auth-Token': token}
         body = json.dumps(params) if params else ''
         url = '{base}/{action}'.format(base=self.base_url, action=action)
-        r = self.session.post(url, data=body, params=kwargs)
+        r = self.session.post(url, data=body, params=kwargs, headers=headers)
 
         if r.status_code != 200:
             self.raise_from_response(r)
