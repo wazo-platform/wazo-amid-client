@@ -39,3 +39,13 @@ c = Client(...)
 
 c.foo.bar()  # bar is a method of the FooCommand class
 ```
+
+
+Running unit tests
+------------------
+
+```
+apt-get install libpq-dev python-dev libffi-dev libyaml-dev
+pip install tox
+tox --recreate -e py27
+```
