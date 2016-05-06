@@ -9,10 +9,10 @@ Usage:
 ```python
 from xivo_amid_client import Client
 
-c = Client('localhost', port=9491, version='1.0', timeout=3)
+c = Client('localhost', port=9491, version='1.0', timeout=3, token='valid-token')
 
-results = c.action('QueueSummary', token='valid-token')
-results = c.action('DBGet', {'Family': 'test', 'Key': 'variable'}, token='valid-token')
+results = c.action('QueueSummary')
+results = c.action('DBGet', {'Family': 'test', 'Key': 'variable'})
 ```
 
 
