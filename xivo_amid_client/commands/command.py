@@ -1,7 +1,6 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2014-2015 Avencall
+# Copyright (C) 2016 Avencall
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,26 +15,19 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-from setuptools import setup
-from setuptools import find_packages
+from xivo_lib_rest_client import RESTCommand
 
-setup(
-    name='xivo_amid_client',
-    version='1.0',
 
-    description='a simple client library for the xivo-amid HTTP interface',
+class CommandCommand(RESTCommand):
 
-    author='Avencall',
-    author_email='dev@avencall.com',
+    resource = 'action'
 
-    url='https://github.com/xivo-pbx/xivo-amid-client',
+    def __call__(self, command):
+        body = {'command': command}
+        url = '{base}/Command'.format(base=self.base_url, command=command)
+        r = self.session.post(url, json=body)
 
-    packages=find_packages(),
+        if r.status_code != 200:
+            self.raise_from_response(r)
 
-    entry_points={
-        'amid_client.commands': [
-            'action = xivo_amid_client.commands.action:ActionCommand',
-            'command = xivo_amid_client.commands.command:CommandCommand',
-        ],
-    }
-)
+        return r.json()

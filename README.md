@@ -13,6 +13,7 @@ c = Client('localhost', port=9491, version='1.0', timeout=3, token='valid-token'
 
 results = c.action('QueueSummary')
 results = c.action('DBGet', {'Family': 'test', 'Key': 'variable'})
+results = c.command('core show channels')
 ```
 
 
