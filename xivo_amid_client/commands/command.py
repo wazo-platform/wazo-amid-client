@@ -24,7 +24,7 @@ class CommandCommand(RESTCommand):
 
     def __call__(self, command):
         body = {'command': command}
-        url = '{base}/Command'.format(base=self.base_url, command=command)
+        url = '{base}/Command'.format(base=self.base_url)
         r = self.session.post(url, json=body)
 
         if r.status_code != 200:
