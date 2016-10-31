@@ -37,7 +37,7 @@ class TestAction(RESTCommandTestCase):
         self.session.post.assert_called_once_with(
             '{base}/QueueSummary'.format(base=self.base_url),
             params={},
-            data='')
+            json=None)
         assert_that(result, equal_to({'return': 'value'}))
 
     def test_action_with_params(self):
@@ -48,5 +48,5 @@ class TestAction(RESTCommandTestCase):
         self.session.post.assert_called_once_with(
             '{base}/DBGet'.format(base=self.base_url),
             params={},
-            data=json.dumps({'Family': 'family', 'Key': 'key'}))
+            json={'Family': 'family', 'Key': 'key'})
         assert_that(result, equal_to({'return': 'value'}))

@@ -15,8 +15,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import json
-
 from xivo_lib_rest_client import RESTCommand
 
 
@@ -25,9 +23,8 @@ class ActionCommand(RESTCommand):
     resource = 'action'
 
     def __call__(self, action, params=None, **kwargs):
-        body = json.dumps(params) if params else ''
         url = '{base}/{action}'.format(base=self.base_url, action=action)
-        r = self.session.post(url, data=body, params=kwargs)
+        r = self.session.post(url, json=params, params=kwargs)
 
         if r.status_code != 200:
             self.raise_from_response(r)
