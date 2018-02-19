@@ -1,6 +1,6 @@
 # xivo-amid-client
 
-[![Build Status](https://travis-ci.org/wazo-pbx/xivo-amid-client.svg?branch=master)](https://travis-ci.org/wazo-pbx/xivo-amid-client)
+[![Build Status](https://jenkins.wazo.community/buildStatus/icon?job=xivo-amid-client)](https://jenkins.wazo.community/job/xivo-amid-client)
 
 A python library to connect to xivo-amid.
 
