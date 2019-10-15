@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-# Copyright (C) 2016 Avencall
+# Copyright 2016-2019 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from hamcrest import assert_that
 from hamcrest import equal_to
 
-from xivo_lib_rest_client.tests.command import RESTCommandTestCase
+from wazo_lib_rest_client.tests.command import RESTCommandTestCase
 
 from ..command import CommandCommand
 

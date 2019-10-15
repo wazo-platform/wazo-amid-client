@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-# Copyright (C) 2016 Avencall
+# Copyright 2016-2019 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from xivo_lib_rest_client import RESTCommand
+from wazo_lib_rest_client import RESTCommand
 
 
 class CommandCommand(RESTCommand):
