@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Copyright (C) 2014-2015 Avencall
+# Copyright 2014-2019 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from setuptools import setup
@@ -20,7 +20,7 @@ setup(
     packages=find_packages(),
 
     entry_points={
-        'amid_client.commands': [
+        'xivo_amid_client.commands': [
             'action = xivo_amid_client.commands.action:ActionCommand',
             'command = xivo_amid_client.commands.command:CommandCommand',
         ],
