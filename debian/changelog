@@ -1,3 +1,9 @@
+wazo-amid-client (1.1) wazo-dev-buster; urgency=medium
+
+  * rename xivo-amid-client to wazo-amid-client
+
+ -- Wazo Maintainers <dev+pkg@wazo.community>  Tue, 29 Oct 2019 11:55:09 -0400
+
 xivo-amid-client (1.0) xivo-dev; urgency=low
 
   * Initial release.

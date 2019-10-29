@@ -1,6 +1,6 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: xivo-amid-client
-Source: https://github.com/wazo-platform/xivo-amid-client
+Upstream-Name: wazo-amid-client
+Source: https://github.com/wazo-platform/wazo-amid-client
 
 Files: *
 Copyright: 2015-2019 The Wazo Authors

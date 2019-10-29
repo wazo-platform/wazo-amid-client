@@ -1,9 +1,9 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
 
-export PYBUILD_NAME=xivo_amid_client
-export PYBUILD_DESTDIR_python2=debian/xivo-amid-client/
-export PYBUILD_DESTDIR_python3=debian/xivo-amid-client-python3/
+export PYBUILD_NAME=wazo_amid_client
+export PYBUILD_DESTDIR_python2=debian/wazo-amid-client/
+export PYBUILD_DESTDIR_python3=debian/wazo-amid-client-python3/
 export PYBUILD_DISABLE=test
 
 %:
