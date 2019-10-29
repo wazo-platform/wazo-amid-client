@@ -7,22 +7,22 @@ from setuptools import setup
 from setuptools import find_packages
 
 setup(
-    name='xivo_amid_client',
+    name='wazo_amid_client',
     version='1.0',
 
-    description='a simple client library for the xivo-amid HTTP interface',
+    description='a simple client library for the wazo-amid HTTP interface',
 
     author='Wazo Authors',
-    author_email='dev.wazo@gmail.com',
+    author_email='dev@wazo.community',
 
     url='http://wazo.community',
 
     packages=find_packages(),
 
     entry_points={
-        'xivo_amid_client.commands': [
-            'action = xivo_amid_client.commands.action:ActionCommand',
-            'command = xivo_amid_client.commands.command:CommandCommand',
+        'wazo_amid_client.commands': [
+            'action = wazo_amid_client.commands.action:ActionCommand',
+            'command = wazo_amid_client.commands.command:CommandCommand',
         ],
     }
 )
