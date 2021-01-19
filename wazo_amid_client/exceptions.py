@@ -6,7 +6,6 @@ from requests import HTTPError
 
 
 class AmidError(HTTPError):
-
     def __init__(self, response):
         try:
             body = response.json()
