@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2015-2020 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2015-2021 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from wazo_amid_client.command import AmidCommand
@@ -16,4 +16,9 @@ class ActionCommand(AmidCommand):
         if r.status_code != 200:
             self.raise_from_response(r)
 
-        return r.json()
+        results = r.json()
+        for result in results:
+            if result.get('Response') == 'Error':
+                self.raise_from_protocol(r)
+
+        return results
