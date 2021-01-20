@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2016-2019 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2016-2021 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from hamcrest import assert_that
@@ -16,11 +16,14 @@ class TestCommand(RESTCommandTestCase):
 
     def test_command(self):
         asterisk_command = 'core show channels'
-        self.session.post.return_value = self.new_response(200, json={'return': 'value'})
+        self.session.post.return_value = self.new_response(
+            200, json={'return': 'value'}
+        )
 
         result = self.command(asterisk_command)
 
         self.session.post.assert_called_once_with(
             '{base}/Command'.format(base=self.base_url),
-            json={'command': asterisk_command})
+            json={'command': asterisk_command},
+        )
         assert_that(result, equal_to({'return': 'value'}))
