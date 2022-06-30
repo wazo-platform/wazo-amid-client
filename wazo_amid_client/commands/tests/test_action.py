@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2014-2021 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2014-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from hamcrest import assert_that
@@ -11,31 +11,36 @@ from ..action import ActionCommand
 
 
 class TestAction(RESTCommandTestCase):
-
     Command = ActionCommand
 
     def test_action_no_params(self):
+        json_response = {'return': 'value'}
         self.session.post.return_value = self.new_response(
-            200, json=[{'return': 'value'}]
+            200, json=[json_response]
         )
 
         result = self.command('QueueSummary')
 
         self.session.post.assert_called_once_with(
-            '{base}/QueueSummary'.format(base=self.base_url), params={}, json=None
+            f'{self.base_url}/QueueSummary', params={},
+            json=None
         )
-        assert_that(result, equal_to([{'return': 'value'}]))
+        assert_that(result, equal_to([json_response]))
 
     def test_action_with_params(self):
+        json_response = {'return': 'value'}
         self.session.post.return_value = self.new_response(
-            200, json=[{'return': 'value'}]
+            200, json=[json_response]
         )
 
-        result = self.command('DBGet', {'Family': 'family', 'Key': 'key'})
+        cmd = 'DBGet'
+        params = {'Family': 'family', 'Key': 'key'}
+
+        result = self.command(cmd, params)
 
         self.session.post.assert_called_once_with(
-            '{base}/DBGet'.format(base=self.base_url),
+            f'{self.base_url}/{cmd}',
             params={},
-            json={'Family': 'family', 'Key': 'key'},
+            json=params,
         )
-        assert_that(result, equal_to([{'return': 'value'}]))
+        assert_that(result, equal_to([json_response]))
