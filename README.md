@@ -14,6 +14,7 @@ c = Client('localhost', port=9491, version='1.0', timeout=3, token='valid-token'
 results = c.action('QueueSummary')
 results = c.action('DBGet', {'Family': 'test', 'Key': 'variable'})
 results = c.command('core show channels')
+results = c.status()
 ```
 
 
@@ -47,5 +48,5 @@ Running unit tests
 ```
 apt-get install libpq-dev python-dev libffi-dev libyaml-dev
 pip install tox
-tox --recreate -e py27
+tox --recreate -e py37
 ```
