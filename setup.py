@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Copyright 2014-2021 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2014-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from setuptools import setup
@@ -18,6 +18,7 @@ setup(
         'wazo_amid_client.commands': [
             'action = wazo_amid_client.commands.action:ActionCommand',
             'command = wazo_amid_client.commands.command:CommandCommand',
+            'status = wazo_amid_client.commands.status:StatusCommand',
         ],
     },
 )
