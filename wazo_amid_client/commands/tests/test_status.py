@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2016-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from hamcrest import assert_that
@@ -23,7 +23,7 @@ class TestStatus(RESTCommandTestCase):
         result = self.command()
 
         self.session.get.assert_called_once_with(
-            f'{self.base_url}',
+            '{base}'.format(base=self.base_url),
             headers={'Accept': 'application/json'}
         )
         assert_that(result, equal_to(json_response))
