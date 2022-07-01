@@ -16,14 +16,11 @@ class TestStatus(RESTCommandTestCase):
 
     def test_status(self):
         json_response = {'return': 'value'}
-        self.session.get.return_value = self.new_response(
-            200, json=json_response
-        )
+        self.session.get.return_value = self.new_response(200, json=json_response)
 
         result = self.command()
 
         self.session.get.assert_called_once_with(
-            '{base}'.format(base=self.base_url),
-            headers={'Accept': 'application/json'}
+            '{base}'.format(base=self.base_url), headers={'Accept': 'application/json'}
         )
         assert_that(result, equal_to(json_response))
