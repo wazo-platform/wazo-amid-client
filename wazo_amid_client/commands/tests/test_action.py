@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-# Copyright 2014-2021 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2014-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from hamcrest import assert_that
@@ -22,7 +21,7 @@ class TestAction(RESTCommandTestCase):
         result = self.command('QueueSummary')
 
         self.session.post.assert_called_once_with(
-            '{base}/QueueSummary'.format(base=self.base_url), params={}, json=None
+            f'{self.base_url}/QueueSummary', params={}, json=None
         )
         assert_that(result, equal_to([{'return': 'value'}]))
 
@@ -34,7 +33,7 @@ class TestAction(RESTCommandTestCase):
         result = self.command('DBGet', {'Family': 'family', 'Key': 'key'})
 
         self.session.post.assert_called_once_with(
-            '{base}/DBGet'.format(base=self.base_url),
+            f'{self.base_url}/DBGet',
             params={},
             json={'Family': 'family', 'Key': 'key'},
         )
