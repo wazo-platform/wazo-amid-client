@@ -6,7 +6,6 @@ from hamcrest import equal_to
 
 from wazo_lib_rest_client.tests.command import RESTCommandTestCase
 
-from ..command import CommandCommand
 from ..status import StatusCommand
 
 
