@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-# Copyright 2020-2021 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2020-2022 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from requests import HTTPError
@@ -23,8 +22,8 @@ class AmidError(HTTPError):
         except KeyError:
             raise InvalidAmidError()
 
-        exception_message = '{e.message}: {e.details}'.format(e=self)
-        super(AmidError, self).__init__(exception_message, response=response)
+        exception_message = f'{self.message}: {self.details}'
+        super().__init__(exception_message, response=response)
 
 
 class AmidServiceUnavailable(AmidError):
@@ -44,8 +43,7 @@ class AmidProtocolError(AmidError):
         except (TypeError, KeyError):
             raise InvalidAmidError()
 
-        exception_message = '{e.message}'.format(e=self)
-        super(HTTPError, self).__init__(exception_message, response=response)
+        super().__init__(f'{self.message}', response=response)
 
 
 class InvalidAmidError(Exception):
