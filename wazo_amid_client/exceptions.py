@@ -43,7 +43,7 @@ class AmidProtocolError(AmidError):
         except (TypeError, KeyError):
             raise InvalidAmidError()
 
-        super().__init__(f'{self.message}', response=response)
+        super(HTTPError, self).__init__(f'{self.message}', response=response)
 
 
 class InvalidAmidError(Exception):
