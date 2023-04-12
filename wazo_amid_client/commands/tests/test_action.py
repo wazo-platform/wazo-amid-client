@@ -1,4 +1,4 @@
-# Copyright 2014-2022 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2014-2023 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 from hamcrest import assert_that
@@ -10,7 +10,6 @@ from ..action import ActionCommand
 
 
 class TestAction(RESTCommandTestCase):
-
     Command = ActionCommand
 
     def test_action_no_params(self):
