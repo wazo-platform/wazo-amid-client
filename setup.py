@@ -16,6 +16,7 @@ setup(
         'wazo_amid_client.commands': [
             'action = wazo_amid_client.commands.action:ActionCommand',
             'command = wazo_amid_client.commands.command:CommandCommand',
+            'config = wazo_amid_client.commands.config:ConfigCommand',
             'status = wazo_amid_client.commands.status:StatusCommand',
         ],
     },
